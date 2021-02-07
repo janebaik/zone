@@ -1,8 +1,7 @@
 # zone
 Proposal is in the wiki 
-
-
-
+Wireframe
+https://wireframe.cc/MbrkWk
 note
 Link to live version.
 Instructions on how to play/interact with the project.
