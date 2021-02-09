@@ -1,0 +1,119 @@
+body{
+    background-color: $sand;
+    font-family: $main-font;
+}
+
+// default 
+input{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+button{
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+// navbar
+.nav-master{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    
+
+    a{
+        margin: 10px;
+        font-size: 20px;
+        text-decoration: none;
+        color: $dark-green;
+        padding: 5px;
+        border: 1px solid $highlight-yellow
+    }
+    a:hover{
+        background-color:$mustard
+    }
+}
+
+// time 
+.time{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding-top: 50px;
+    font-size: 100px;
+}
+// default location
+#location{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+// search bar
+.search-bar{
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    padding-top: 50px;
+    .search-bar-input{
+        margin: 10px;
+        height: 100px;
+        width: 30%;
+        font-size: 50px;
+    }
+}
+.clipped{
+    height: 500px;
+    background-color: red;
+    position: relative;
+    bottom: -100px;
+}
+// footer
+.earth-clipped{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    padding-top: 140px;
+    align-items: center;
+    
+    
+    .time-buttons{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #current-temp{
+        font-size: 75px;
+    }
+
+    #current-sky{
+        font-size: 40px;
+    }
+
+    button{
+        margin: 5px;
+        font-size: 20px;
+        padding:10px;
+        width: 130%;
+    }
+    .morning-button:hover{
+        cursor: pointer;
+        background-color: $mustard;
+        color: rgb(255, 246, 246);
+        border:  1.5px solid #faff00;
+    }
+    .afternoon-button:hover{
+        cursor: pointer;
+        background-color: $highlight-orange;
+        color: $dark-orange;
+        border: 1.5px solid #ff7624;
+    }
+    .night-button:hover{
+        cursor: pointer;
+        background-color: $dark-green;
+        color: $highlight-green;
+        border:  1.5px solid #060631;
+    }
+}
+
