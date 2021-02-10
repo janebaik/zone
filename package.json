@@ -46,6 +46,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "moment-timezone": "^0.5.33",
     "node-ipinfo": "^2.0.1"
   }
 }

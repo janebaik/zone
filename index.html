@@ -13,8 +13,6 @@
 </head>
 
 <body>
-    <!-- ?  -->
-
     <nav class="nav-master">
         <a target="_blank" href="https://github.com/janebaik">Github</a>
         <a target="_blank" href="">Personal Site(deadlinkrn)</a>
@@ -24,22 +22,25 @@
      <!-- <div id="scrollTime" onscroll="scrollTime()"> -->
     <div>
         <span id="time" class="time"></span>
+        <div id="phaseOfDay"></div>
+        <!-- <p id="future-time"></p> -->
+        <!-- <p id="date">Date</p> -->
         <p id="geolocation-unaviable"></p>
         <div class="search-bar">
             <input type="text" class="search-bar-input" placeholder="Search Countries" id="input-city" >
         </div>
         <div id="location"></div>
-        <!-- <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script> -->
         <footer class="earth-clipped">
             <div class="time-buttons">
-                <button class="morning-button">Morning</button>
-                <button class="afternoon-button">Afternoon</button>
-                <button class="night-button">Night</button>
+                <button id="change-morning" class="morning-button">Morning</button>
+                <button id="change-afternoon" class="afternoon-button">Afternoon</button>
+                <button id="change-night" class="night-button">Night</button>
+                <button id="change-current" class="current-button">Go back to Current Time</button>
+                <!-- <button id="change-now" class="now-button">Current Time</button> -->
             </div>
             <div id="current-temp">60</div>
             <div id="current-sky">windy</div>
         </footer>
-
     </div>
 </body>
 
