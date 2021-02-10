@@ -1,4 +1,9 @@
 
+export function time() {
+    // current time
+    const date = new Date();
+    document.getElementById("time").innerHTML = `${date.toLocaleTimeString()}`;
+}
 
 export function timeConversion(unixTime){
     const myDate = new Date(unixTime * 1000);
