@@ -99,7 +99,7 @@ position: fixed;
     #current-temp{
         position: fixed;
         left: 50%;
-        margin-left: -50px;
+        margin-left: -180px;
         margin-top: 950px;
         font-size: 75px;
     }
@@ -107,10 +107,12 @@ position: fixed;
     #current-sky{
         position: fixed;
         left: 50%;
-        margin-left: 200px;
+        margin-left: 300px;
         margin-top: 950px;
         font-size: 75px;
         font-size: 40px;
+
+
     }
 
     button{

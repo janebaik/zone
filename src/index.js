@@ -10,7 +10,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Current location
     function currentLocation() {
+        debugger
         if ("geolocation" in navigator) {
+            // debugger
             // console.log(navigator.geolocation);
             navigator.geolocation.getCurrentPosition(function (pos) {
                 const api = "f8d77a8717d41a7529bb83ece54c1905";
@@ -50,6 +52,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function currentTimeWeather(data) {
+        // debugger
         // current time
         const unixTime = data.dt + data.timezone;
         const currentTime = timeConversion(unixTime);
@@ -60,27 +63,32 @@ window.addEventListener("DOMContentLoaded", () => {
         const location = data.name;
         const celcius = temp - 273.15;
         const fahrenheit = 1.8*(temp - 273) + 32
-        document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C`;
+        document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
         document.getElementById("current-sky").innerHTML = `${sky}`;
         document.getElementById("location").innerHTML = `${location}`;
     }
 
     // time phases
-    document.getElementById("change-morning").onclick = function changeMorning(){
-        document.getElementById("phaseOfDay").innerHTML = "9:00AM"
+    document.getElementById("change-morning").onclick = () =>{
+        const time = ""
+        document.getElementById("time").innerHTML = time
     }
 
     document.getElementById("change-afternoon").onclick = function changeMorning() {
-        document.getElementById("phaseOfDay").innerHTML = "12:00PM"
+        const time = ""
+        document.getElementById("time").innerHTML = time
     }
 
     document.getElementById("change-night").onclick = function changeMorning() {
-        document.getElementById("phaseOfDay").innerHTML = "6:00PM"
+        const time = ""
+        document.getElementById("time").innerHTML = time
     }
-    // document.getElementById("change-now").onclick = function changeMorning() {
+
+    document.getElementById("change-current").onclick = function changeMorning() {
         // TODO: Implement this in order to gain the current time again
-    //     document.getElementById("phaseOfDay").innerHTML = null;
-    // }
+        debugger
+        document.getElementById("phaseOfDay").innerHTML = currentLocation();
+    }
 
     // NOTE: Both these functions are for ultimate scrolling
 
