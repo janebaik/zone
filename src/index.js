@@ -47,7 +47,7 @@ input.addEventListener("change", handleInput);
 function handleInput(e) {
     // location based on user's input
     const input = e.target.value
-    futureWeather(input);
+    weatherSearch(input);
 }
 
 function weatherSearch(cityname) {
