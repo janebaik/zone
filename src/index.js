@@ -43,7 +43,7 @@ function currentTimeWeather(data) {
     document.getElementById("location").innerHTML = `${location}`;
 }
 
-const input = document.querySelector("input");
+const input = document.getElementById("input-city");
 input.addEventListener("change", handleInput);
 function handleInput(e) {
     // location based on user's input
@@ -61,6 +61,7 @@ function weatherSearch(cityname) {
 }
 
 function futureWeather(cityname){
+    const api = "f8d77a8717d41a7529bb83ece54c1905";
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${api}`)
         .then(function (resp) { return resp.json() })
         .then(function (data) { forecastWeather(data.city.name, data.list) })
@@ -76,7 +77,7 @@ function forecastWeather(name, data) {
 
     const futureTemps = document.querySelector("#future-temps");
     futureTemps.innerHTML = "<ul>" + data.map(data => {
-        const celcius = data.main.feels_like- 273.15;
+        const celcius = data.main.feels_like - 273.15;
         const fahrenheit = 1.8 * (data.main.feels_like- 273) + 32;
         return "<li>" + `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F` + "</li>";
     }).join("") + "</ul>"
@@ -88,34 +89,3 @@ function forecastWeather(name, data) {
     
 }
 
-// body.onscroll = logScroll;
-
-// function logScroll() {
-//     data.map(data => {
-//         console.log(data.dt_txt);
-//         console.log(data.main.feels_like);
-//         console.log(data.weather[0].description);
-//     })
-// }
-
-
-
-// document.getElementById("change-morning").onclick = () => {
-//     const time = ""
-//     document.getElementById("time").innerHTML = time
-// }
-
-// document.getElementById("change-afternoon").onclick = function changeMorning() {
-//     const time = ""
-//     document.getElementById("time").innerHTML = time
-// }
-
-// document.getElementById("change-night").onclick = function changeMorning() {
-//     const time = ""
-//     document.getElementById("time").innerHTML = time
-// }
-
-// document.getElementById("change-current").onclick = function changeMorning() {
-//     // TODO: Implement this in order to gain the current time again
-//     document.getElementById("phaseOfDay").innerHTML = currentWeather();
-// }

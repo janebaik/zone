@@ -109,44 +109,63 @@ position: fixed;
         left: 50%;
         margin-left: 300px;
         margin-top: 950px;
-        font-size: 75px;
         font-size: 40px;
 
 
     }
-
-    button{
-        display: flex;
-        flex-direction: column;
-        margin: 10px;
-        font-size: 20px;
-        padding:10px;
-        width: 100%;
-        text-align: center;
-    }
-    .morning-button:hover{
-        cursor: pointer;
-        background-color: $mustard;
-        color: rgb(255, 246, 246);
-        border:  1.5px solid #faff00;
-    }
-    .afternoon-button:hover{
-        cursor: pointer;
-        background-color: $highlight-orange;
-        color: $dark-orange;
-        border: 1.5px solid #ff7624;
-    }
-    .night-button:hover{
-        cursor: pointer;
-        background-color: $dark-green;
-        color: $highlight-green;
-        border:  1.5px solid #060631;
-    }
-
-    .current-button:hover{
-        cursor: pointer;
-        border:  1.5px solid #060631;
-        background-color: lightgray;
-    }
 }
+#future-conditions{
+    text-align:center;
+    left: 50%;
+    margin-left: -600px;
+    margin-top: 950px;
+    font-size: 25px;
 
+}
+#future-temps{
+    left: 50%;
+    margin-left: -180px;
+    margin-top: 950px;
+    font-size: 25px;
+  
+}
+#future-weathercondition{
+    left: 50%;
+    margin-left: 300px;
+    margin-top: 950px;
+    font-size: 25px;
+  
+}
+    // .morning-button:hover{
+    //     cursor: pointer;
+    //     background-color: $mustard;
+    //     color: rgb(255, 246, 246);
+    //     border:  1.5px solid #faff00;
+    // }
+    // .afternoon-button:hover{
+    //     cursor: pointer;
+    //     background-color: $highlight-orange;
+    //     color: $dark-orange;
+    //     border: 1.5px solid #ff7624;
+    // }
+    // .night-button:hover{
+    //     cursor: pointer;
+    //     background-color: $dark-green;
+    //     color: $highlight-green;
+    //     border:  1.5px solid #060631;
+    // }
+
+    // .current-button:hover{
+    //     cursor: pointer;
+    //     border:  1.5px solid #060631;
+    //     background-color: lightgray;
+    // }
+    //     button{
+    //     display: flex;
+    //     flex-direction: column;
+    //     margin: 10px;
+    //     font-size: 20px;
+    //     padding:10px;
+    //     width: 100%;
+    //     text-align: center;
+    // }
