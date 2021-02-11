@@ -5,19 +5,26 @@
 $main-font: 'Raleway', sans-serif;
 $nunito:'Nunito', sans-serif;
 
+// morning
+$mustard: #ffd375;
+$white: #fff7e5;
+$morning-orange: #ffa335;
+$morning-light-yellow:#fff9c1;
+
 // afternoon
-$sand:#d4bfab;
+$sand:#ef943f;
 $blue:#0019c7;
 $green: #496663;
-$highlight-orange: #ffd6a0;
+$highlight-orange: #e77972;
 $gray:#a8aab8a3;
-$highlight-yellow:#ffdd46;
-$dark-orange:rgb(139, 74, 0);
+$highlight-yellow:#ffd77b;
+$dark-orange:#ff4900;
 
 
-// morning
-$mustard: #ecc24d;
-$white: rgb(255, 246, 246);
 // night
-$highlight-green: #719291;
-$dark-green:#1a2d33;
+$night-highlight-green: #719291;
+$night-gray: #737373;
+$night-dark-green:#09547e;
+$night-ligt-blue: #3193c1;
+$night-lighter-blue: #6695bb;
+$night-purple: #6a00f4;

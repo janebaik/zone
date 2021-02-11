@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
     <script src="./dist/main.js" defer></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
     <link rel="stylesheet" href="./dist/main.css" />
     <title>Zone</title>
 </head>
@@ -32,10 +34,12 @@
     <div class="modal-forecast">
         <div class="modal-forecast-content">
             <span class="close-forecast-btn">&times;</span>
-            <p>Click anywhere on the form to get the data!</p>
+            <p>Click anywhere on the form to get the data after inserting a city!</p>
+            <h1 id="future-location"></h1>
             <form class="search-forecast-bar">
                 <input type="text" class="search-forecast-bar-input" placeholder="Search Countries" id="input-forecast-city">
             </form>
+                <div id="weatherContainer" style="height: 300px; width: 100%;"></div>
             <div class="organization">
             <div id="diagram-date"></div>
             <div id="diagram-degree"></div>
