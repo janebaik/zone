@@ -3,10 +3,9 @@ body{
     // background-color: $sand;
     font-family: $main-font;
     background-image: linear-gradient(180deg, rgb(255, 174, 23), rgb(0, 22, 41));
-    height: 10000px;
+    height: 36000px;
     position: relative;
 }
-
 // default 
 input{
     outline: none;
@@ -91,6 +90,7 @@ position: fixed;
     
     .time-buttons{
         position: fixed;
+        text-align:center;
         left: 50%;
         margin-left: -600px;
         margin-top: 950px;
@@ -116,10 +116,13 @@ position: fixed;
     }
 
     button{
-        margin: 5px;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
         font-size: 20px;
         padding:10px;
-        width: 50%;
+        width: 100%;
+        text-align: center;
     }
     .morning-button:hover{
         cursor: pointer;
