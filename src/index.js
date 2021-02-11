@@ -6,7 +6,6 @@ import "./styles/index.scss";
 
 function currentWeather(){
     if ("geolocation" in navigator) {
-        // debugger
         // console.log(navigator.geolocation);
         navigator.geolocation.getCurrentPosition(function (pos) {
             const api = "f8d77a8717d41a7529bb83ece54c1905";
@@ -27,7 +26,7 @@ function currentWeather(){
 }
 currentWeather();
 function currentTimeWeather(data) {
-    debugger
+
     const unixTime = data.dt + data.timezone;
     const currentTime = timeConversion(unixTime);
     document.getElementById("time").innerHTML = currentTime;
@@ -59,6 +58,16 @@ function weatherSearch(cityname) {
         })
 }
 
+// HERE
+const inputForecast = document.getElementById("input-forecast-city");
+inputForecast.addEventListener("change", handleinputForecast);
+function handleinputForecast(e) {
+    // location based on user's input
+    const input = e.target.value
+    futureWeather(input);
+}
+
+
 function futureWeather(cityname){
     const api = "f8d77a8717d41a7529bb83ece54c1905";
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${api}`)
@@ -69,22 +78,60 @@ function futureWeather(cityname){
 function forecastWeather(name, data) {
     document.getElementById("location").innerHTML = name;
 
-    const futureConditions = document.querySelector("#future-conditions");
+    const futureConditions = document.querySelector("#diagram-date");
     futureConditions.innerHTML = "<ul>" + data.map( data =>{
         return "<li>" + data.dt_txt + "</li>" ;
     }).join("") + "</ul>"
 
-    const futureTemps = document.querySelector("#future-temps");
+    const futureTemps = document.querySelector("#diagram-degree");
     futureTemps.innerHTML = "<ul>" + data.map(data => {
         const celcius = data.main.feels_like - 273.15;
         const fahrenheit = 1.8 * (data.main.feels_like- 273) + 32;
         return "<li>" + `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F` + "</li>";
     }).join("") + "</ul>"
 
-    const futureWeatherCondition = document.querySelector("#future-weathercondition");
+    const futureWeatherCondition = document.querySelector("#diagram-weather-conditions");
     futureWeatherCondition.innerHTML = "<ul>" + data.map(data => {
         return "<li>" + data.weather[0].description  + "</li>";
     }).join("") + "</ul>"
     
 }
 
+// about website
+let modalButton = document.getElementById("modal-btn");
+let modal = document.querySelector(".modal");
+let closeModal = document.querySelector(".close-btn");
+
+modalButton.onclick = function() {
+    modal.style.display = "block"
+}
+
+closeModal.onclick = function(){
+    modal.style.display = "none"
+}
+
+window.onclick = function(e) {
+    if (e.target == modal){
+        modal.style.display="none"
+    }
+}
+
+
+// forecast
+let modalForecastButton = document.getElementById("btn-forecast");
+let modalForecast = document.querySelector(".modal-forecast");
+let closeForecastModal = document.querySelector(".close-forecast-btn");
+
+modalForecastButton.onclick = function () {
+    modalForecast.style.display = "block"
+}
+
+closeForecastModal.onclick = function () {
+    modalForecast.style.display = "none"
+}
+
+window.onclick = function (e) {
+    if (e.target == modalForecast) {
+        modalForecast.style.display = "none"
+    }
+}
