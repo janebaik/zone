@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
     <script src="./dist/main.js" defer></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
     <link rel="stylesheet" href="./dist/main.css" />
     <title>Zone</title>
 </head>
@@ -18,35 +20,50 @@
         <a target="_blank" href="">Personal Site(deadlinkrn)</a>
         <a target="_blank" href="https://www.linkedin.com/in/jane-baik-963b59195/">LinkedIn</a>
     </nav>
-    
-        <!-- time  -->
-     <!-- <div id="scrollTime" onscroll="scrollTime()"> -->
+    <!-- about me -->
+    <button id="modal-btn">How does it work?</button>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h1>Welcome to Zone</h1>
+            <p>You can search for weather all over the world!</p>
+        </div>
+    </div>
+    <!-- forecast -->
+    <button id="btn-forecast"class="button-forecast">Get the Forecast</button>
+    <div class="modal-forecast">
+        <div class="modal-forecast-content">
+            <span class="close-forecast-btn">&times;</span>
+            <p>Click anywhere on the form to get the data after inserting a city!</p>
+            <h1 id="future-location"></h1>
+            <form class="search-forecast-bar">
+                <input type="text" class="search-forecast-bar-input" placeholder="Search Countries" id="input-forecast-city">
+            </form>
+                <div id="weatherContainer" style="height: 300px; width: 100%;"></div>
+            <div class="organization">
+            <div id="diagram-date"></div>
+            <div id="diagram-degree"></div>
+            <div id="diagram-weather-conditions"></div>
+            </div>
+        </div>
+    </div>
+    <!-- "content" -->
     <div>
+        <!-- "clock" -->
         <span id="time" class="time">Loading...</span>
         <div id="phaseOfDay"></div>
-        <!-- <p id="future-time"></p> -->
-        <!-- <p id="date">Date</p> -->
+        <!-- error message(should customize this) -->
         <p id="geolocation-unaviable"></p>
+        <!-- search nar -->
         <div class="search-bar">
             <input type="text" class="search-bar-input" placeholder="Search Countries" id="input-city" >
         </div>
+        <!-- infor of city -->
         <div id="location"></div>
         <footer class="earth-clipped">
-            <!-- <div class="time-buttons">
-                <button id="change-morning" class="morning-button">Next Morning</button>
-                <button id="change-afternoon" class="afternoon-button">Next Afternoon</button>
-                <button id="change-night" class="night-button">Next Night</button>
-                <button id="change-current" class="current-button">Go back to Current Time</button>
-                <button id="change-now" class="now-button">Current Time</button>
-            </div> -->
             <div id="current-temp">...</div>
             <div id="current-sky">...</div>
         </footer>
-        <div class="future">
-            <div id="future-conditions"></div>
-            <div id="future-temps"></div>
-            <div id="future-weathercondition"></div>
-        </div>
     </div>
 </body>
 </html>

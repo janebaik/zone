@@ -6,7 +6,6 @@ import "./styles/index.scss";
 
 function currentWeather(){
     if ("geolocation" in navigator) {
-        // debugger
         // console.log(navigator.geolocation);
         navigator.geolocation.getCurrentPosition(function (pos) {
             const api = "f8d77a8717d41a7529bb83ece54c1905";
@@ -27,7 +26,7 @@ function currentWeather(){
 }
 currentWeather();
 function currentTimeWeather(data) {
-    debugger
+
     const unixTime = data.dt + data.timezone;
     const currentTime = timeConversion(unixTime);
     document.getElementById("time").innerHTML = currentTime;
@@ -59,32 +58,141 @@ function weatherSearch(cityname) {
         })
 }
 
-function futureWeather(cityname){
+// about website
+let modalButton = document.getElementById("modal-btn");
+let modal = document.querySelector(".modal");
+let closeModal = document.querySelector(".close-btn");
+
+modalButton.onclick = function() {
+    modal.style.display = "block"
+}
+
+closeModal.onclick = function(){
+    modal.style.display = "none"
+}
+
+window.onclick = function(e) {
+    if (e.target == modal){
+        modal.style.display="none"
+    }
+}
+
+
+// forecast
+let modalForecastButton = document.getElementById("btn-forecast");
+let modalForecast = document.querySelector(".modal-forecast");
+let closeForecastModal = document.querySelector(".close-forecast-btn");
+
+modalForecastButton.onclick = function () {
+    modalForecast.style.display = "block"
+}
+
+closeForecastModal.onclick = function () {
+    modalForecast.style.display = "none"
+}
+
+window.onclick = function (e) {
+    if (e.target == modalForecast) {
+        modalForecast.style.display = "none"
+    }
+}
+
+const inputForecast = document.getElementById("input-forecast-city");
+inputForecast.addEventListener("change", handleinputForecast);
+function handleinputForecast(e) {
+    // location based on user's input
+    const input = e.target.value
+    futureWeather(input);
+}
+
+
+function futureWeather(cityname) {
     const api = "f8d77a8717d41a7529bb83ece54c1905";
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${api}`)
         .then(function (resp) { return resp.json() })
         .then(function (data) { forecastWeather(data.city.name, data.list) })
 }
 
+const diagramDatesDegrees = [];
+const diagramConditions = [];
 function forecastWeather(name, data) {
-    document.getElementById("location").innerHTML = name;
-
-    const futureConditions = document.querySelector("#future-conditions");
-    futureConditions.innerHTML = "<ul>" + data.map( data =>{
-        return "<li>" + data.dt_txt + "</li>" ;
-    }).join("") + "</ul>"
-
-    const futureTemps = document.querySelector("#future-temps");
-    futureTemps.innerHTML = "<ul>" + data.map(data => {
+    document.getElementById("future-location").innerHTML = name;
+    const futureConditions = document.querySelector("#diagram-date");
+    futureConditions.innerHTML = "<ul>" + data.map(data => {
         const celcius = data.main.feels_like - 273.15;
-        const fahrenheit = 1.8 * (data.main.feels_like- 273) + 32;
-        return "<li>" + `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F` + "</li>";
-    }).join("") + "</ul>"
-
-    const futureWeatherCondition = document.querySelector("#future-weathercondition");
-    futureWeatherCondition.innerHTML = "<ul>" + data.map(data => {
-        return "<li>" + data.weather[0].description  + "</li>";
-    }).join("") + "</ul>"
-    
+        const fahrenheit = 1.8 * (data.main.feels_like - 273) + 32;
+        diagramDatesDegrees.push([data.dt_txt, Math.round(fahrenheit),Math.round(celcius)])
+        diagramConditions.push([data.dt_txt,data.weather[0].description])
+        debugger
+        console.log(diagramConditions)
+    })
 }
 
+// diagram for weather degree
+window.onload = function () {
+    const itemC = diagramDatesDegrees.map(condition => {
+        debugger
+        return { label: `${condition[0]}`, y:condition[1] }
+    })
+    const itemF = diagramDatesDegrees.map(condition => {
+        return { label: `${condition[0]}`, y: condition[2] }
+    })
+    var chart = new CanvasJS.Chart("weatherContainer", {
+        animationEnabled: true,
+        title: {
+            text: "Forecasted Degree For Next Five Days"
+        },
+        axisY: {
+            title: "Fahrenheit",
+            titleFontColor: "#4F81BC",
+            lineColor: "#4F81BC",
+            labelFontColor: "#4F81BC",
+            tickColor: "#4F81BC"
+        },
+        axisY2: {
+            title: "Celcius",
+            titleFontColor: "#C0504E",
+            lineColor: "#C0504E",
+            labelFontColor: "#C0504E",
+            tickColor: "#C0504E"
+        },
+        toolTip: {
+            shared: true
+        },
+        legend: {
+            cursor: "pointer",
+            itemclick: toggleDataSeries
+        },
+        data: [{
+            type: "column",
+            name: "Fahrenheit Degree",
+            legendText: "Fahrenheit Degree",
+            showInLegend: true,
+            dataPoints: [
+                {itemC}
+            ]
+        },
+        {
+            type: "column",
+            name: "Celcius Degree",
+            legendText: "Celcius Degree",
+            axisYType: "secondary",
+            showInLegend: true,
+            dataPoints: [
+                {itemF}
+            ]
+        }]
+    });
+    chart.render();
+
+    function toggleDataSeries(e) {
+        if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+            e.dataSeries.visible = false;
+        }
+        else {
+            e.dataSeries.visible = true;
+        }
+        chart.render();
+    }
+
+}
