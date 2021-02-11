@@ -27,8 +27,7 @@ function currentWeather(){
 }
 currentWeather();
 function currentTimeWeather(data) {
-    // debugger
-    // current time
+    debugger
     const unixTime = data.dt + data.timezone;
     const currentTime = timeConversion(unixTime);
     document.getElementById("time").innerHTML = currentTime;
@@ -48,7 +47,7 @@ input.addEventListener("change", handleInput);
 function handleInput(e) {
     // location based on user's input
     const input = e.target.value
-    weatherSearch(input);
+    futureWeather(input);
 }
 
 function weatherSearch(cityname) {
