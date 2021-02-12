@@ -3,6 +3,7 @@ body{
     font-family: $main-font;
     height: 36000px;
     position: relative;
+    background-color: #a4f1ff;
 }
 // default 
 input{
@@ -19,6 +20,7 @@ button{
 button:hover{
     cursor: pointer;
     background-color: $night-highlight-green;
+    border: 1px solid $morning-light-yellow;
 }
 
 // navbar
@@ -33,10 +35,11 @@ button:hover{
         text-decoration: none;
         color: $white;
         padding: 5px;
-        border: 1px solid $highlight-yellow
+        border: 1px solid $highlight-yellow;
     }
     a:hover{
         background-color:$gray;
+        border: 1px solid $morning-light-yellow;
     }
 }
 

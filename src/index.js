@@ -207,8 +207,8 @@ function forecastWeather(name, data) {
 
     function scrollRotate() {
         let image = document.getElementById("world");
-        let circle = document.getElementById("circle")
-        image.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
-        circle.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
+        let circle = document.getElementById("circle");
+        image.style.transform = `rotate(${window.pageYOffset / 4}deg)`; 
+        circle.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
     }
 });
