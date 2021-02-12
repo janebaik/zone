@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
         image.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
         circle.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
     }
-
+    scrollRotate()
     // music
 
     let audio;
