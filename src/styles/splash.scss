@@ -165,7 +165,7 @@ button:hover{
 }
 .audio{
     position: fixed;
-    left: 36%;
+    left: 40%;
     margin-top: 330px;
     padding-top: 150px;
     text-align: center;
@@ -177,10 +177,10 @@ button:hover{
 // search bar
 .search-bar{
     position: fixed;
-    left: 50%;
-    margin-left: -219px;
-    margin-top: 280px;
-    padding-top: 50px;
+    // left: 50%;
+    margin-left: 35%;
+    margin-top: 330px;
+    z-index: 3;
     width: 100%;
     .search-bar-input{
         margin: 10px;
