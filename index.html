@@ -10,6 +10,7 @@
     <script src="./dist/main.js" defer></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
+    <!-- <script src="index.js"></script> -->
     <link rel="stylesheet" href="./dist/main.css" />
     <title>Zone</title>
 </head>
@@ -35,8 +36,10 @@
         <div class="modal-forecast-content">
             <span class="close-forecast-btn">&times;</span>
             <p>Click anywhere on the form to get the data after inserting a city!</p>
+            <p>Please wait until the graph is show!</p>
             <h1 id="future-location"></h1>
             <form class="search-forecast-bar">
+                <label for="input-forecast-city">Country:</label>
                 <input type="text" class="search-forecast-bar-input" placeholder="Search Countries" id="input-forecast-city">
             </form>
             <div id="weatherContainer" ></div>
@@ -44,6 +47,12 @@
             
         </div>
     </div>
+    <!-- globe for now -->
+    <div class="wrapper">
+        <img id="world" src="./src/styles/world.png" alt="scroll">
+        <div id="circle" class="circle" ></div>
+    </div>
+
     <!-- "content" -->
     <div>
         <!-- "clock" -->

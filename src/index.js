@@ -200,4 +200,15 @@ function forecastWeather(name, data) {
     }
 
 }
+
+    window.onscroll = function () {
+        scrollRotate();
+    };
+
+    function scrollRotate() {
+        let image = document.getElementById("world");
+        let circle = document.getElementById("circle")
+        image.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
+        circle.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
+    }
 });
