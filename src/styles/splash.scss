@@ -1,9 +1,7 @@
 
 body{
-    // background-color: $sand;
     font-family: $main-font;
-    background-image: linear-gradient(180deg, rgb(255, 174, 23), rgb(0, 22, 41));
-    height: 3600px;
+    height: 36000px;
     position: relative;
 }
 // default 
@@ -11,6 +9,7 @@ input{
     outline: none;
     border: none;
     border-radius: 5px;
+    border: 1px solid $mustard;
 }
 button{
     border: none;
@@ -19,6 +18,7 @@ button{
 }
 button:hover{
     cursor: pointer;
+    background-color: $night-highlight-green;
 }
 
 // navbar
@@ -31,12 +31,12 @@ button:hover{
     a{
         font-size: 20px;
         text-decoration: none;
-        color: $night-dark-green;
+        color: $white;
         padding: 5px;
         border: 1px solid $highlight-yellow
     }
     a:hover{
-        background-color:$mustard
+        background-color:$gray;
     }
 }
 
@@ -147,7 +147,8 @@ button:hover{
     padding: 10px;
     font-size: 100px;
     border-radius: 5px;
-    background-color: $gray;
+    background-color: $night-highlight-green;
+    
 }
 
 // default location
@@ -210,5 +211,27 @@ button:hover{
         font-size: 40px;
     }
 
+}
+
+.circle {
+    top: -50%;
+    left: -50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    width: 3600px;
+    height: 3600px;
+    background-image: linear-gradient(to right, #1100ff, #a9eeff);
+    text-align: center;
+    z-index: -99;
+}
+
+#world {
+    top: 50%;
+    left: -45%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    width: 1600px;
+    text-align: center;
+    z-index: -1;
 }
 
