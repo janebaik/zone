@@ -4,6 +4,7 @@ import {
 } from "./time";
 import "./styles/index.scss";
 
+document.addEventListener("DOMContentLoaded", () => {
 function currentWeather(){
     if ("geolocation" in navigator) {
         // console.log(navigator.geolocation);
@@ -108,53 +109,57 @@ function handleinputForecast(e) {
 
 function futureWeather(cityname) {
     const api = "f8d77a8717d41a7529bb83ece54c1905";
+    debugger
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${api}`)
         .then(function (resp) { return resp.json() })
         .then(function (data) { forecastWeather(data.city.name, data.list) })
 }
 
-const diagramDatesDegrees = [];
-const diagramConditions = [];
+// To do this you have to refactor your codes so forecastWeather have an access to variable chart
+let diagramFahDegrees = [];
+let diagramCelDegrees = [];
 function forecastWeather(name, data) {
+    debugger
     document.getElementById("future-location").innerHTML = name;
+    debugger
     const futureConditions = document.querySelector("#diagram-date");
-    futureConditions.innerHTML = "<ul>" + data.map(data => {
+    futureConditions.innerHTML = data.map(data => {
         const celcius = data.main.feels_like - 273.15;
         const fahrenheit = 1.8 * (data.main.feels_like - 273) + 32;
-        diagramDatesDegrees.push([data.dt_txt, Math.round(fahrenheit),Math.round(celcius)])
-        diagramConditions.push([data.dt_txt,data.weather[0].description])
+        let dataFahDegree = {}
+        dataFahDegree["label"] = `${data.dt_txt}`;
+        dataFahDegree["y"] = Math.round(fahrenheit);
+        diagramFahDegrees.push(dataFahDegree);
+        let dataCelDegree = {}
+        dataCelDegree["label"] = `${data.dt_txt}`;
+        dataCelDegree["y"] = Math.round(celcius);
+        diagramCelDegrees.push(dataCelDegree);
         debugger
-        console.log(diagramConditions)
     })
-}
-
-// diagram for weather degree
-window.onload = function () {
-    const itemC = diagramDatesDegrees.map(condition => {
-        debugger
-        return { label: `${condition[0]}`, y:condition[1] }
-    })
-    const itemF = diagramDatesDegrees.map(condition => {
-        return { label: `${condition[0]}`, y: condition[2] }
-    })
+    debugger
     var chart = new CanvasJS.Chart("weatherContainer", {
         animationEnabled: true,
         title: {
             text: "Forecasted Degree For Next Five Days"
+        },
+        axisX: {
+            title: "Dates"
         },
         axisY: {
             title: "Fahrenheit",
             titleFontColor: "#4F81BC",
             lineColor: "#4F81BC",
             labelFontColor: "#4F81BC",
-            tickColor: "#4F81BC"
+            tickColor: "#4F81BC",
+            includeZero: true
         },
         axisY2: {
             title: "Celcius",
             titleFontColor: "#C0504E",
             lineColor: "#C0504E",
             labelFontColor: "#C0504E",
-            tickColor: "#C0504E"
+            tickColor: "#C0504E",
+            includeZero: true
         },
         toolTip: {
             shared: true
@@ -165,12 +170,10 @@ window.onload = function () {
         },
         data: [{
             type: "column",
-            name: "Fahrenheit Degree",
-            legendText: "Fahrenheit Degree",
+            name: "Fahrenheit",
             showInLegend: true,
-            dataPoints: [
-                {itemC}
-            ]
+            yValueFormatString: "",
+            dataPoints: diagramFahDegrees
         },
         {
             type: "column",
@@ -178,14 +181,15 @@ window.onload = function () {
             legendText: "Celcius Degree",
             axisYType: "secondary",
             showInLegend: true,
-            dataPoints: [
-                {itemF}
-            ]
+            dataPoints: diagramCelDegrees
         }]
     });
+    diagramFahDegrees = [];
+    diagramCelDegrees = [];
     chart.render();
 
     function toggleDataSeries(e) {
+        debugger
         if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
             e.dataSeries.visible = false;
         }
@@ -196,3 +200,4 @@ window.onload = function () {
     }
 
 }
+});
