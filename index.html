@@ -31,7 +31,7 @@
         </div>
     </div>
     <!-- forecast -->
-    <button id="btn-forecast"class="button-forecast">Get the Forecast</button>
+    <button id="btn-forecast" class="button-forecast">Get the Forecast</button>
     <div class="modal-forecast">
         <div class="modal-forecast-content">
             <span class="close-forecast-btn">&times;</span>
@@ -40,17 +40,18 @@
             <h1 id="future-location"></h1>
             <form class="search-forecast-bar">
                 <label for="input-forecast-city">Country:</label>
-                <input type="text" class="search-forecast-bar-input" placeholder="Search Countries" id="input-forecast-city">
+                <input type="text" class="search-forecast-bar-input" placeholder="Search Countries"
+                    id="input-forecast-city">
             </form>
-            <div id="weatherContainer" ></div>
+            <div id="weatherContainer"></div>
             <div id="diagram-date"></div>
-            
+
         </div>
     </div>
     <!-- globe for now -->
     <div class="wrapper">
         <img id="world" src="./src/styles/world.png" alt="scroll">
-        <div id="circle" class="circle" ></div>
+        <div id="circle" class="circle"></div>
     </div>
 
     <!-- "content" -->
@@ -62,15 +63,19 @@
         <p id="geolocation-unaviable"></p>
         <!-- search nar -->
         <div class="search-bar">
-            <input type="text" class="search-bar-input" placeholder="Search Countries" id="input-city" >
+            <input type="text" class="search-bar-input" placeholder="Search Countries" id="input-city">
         </div>
         <!-- infor of city -->
         <div id="location"></div>
+        <div class="audio">
+            <p>Music? Search a location!</p>
+            <div id="audio-music"></div>
+        </div>
         <footer class="earth-clipped">
             <div id="current-temp">...</div>
             <div id="current-sky">...</div>
         </footer>
     </div>
 </body>
-</html>
 
+</html>
