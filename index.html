@@ -66,6 +66,17 @@
         </div>
         <!-- infor of city -->
         <div id="location"></div>
+        <div class="audio">
+            <p>Music?</p>
+            <audio id="outsideAudio" controls>
+                <source src="./src/styles/music/mixkit-urban-ambient-sound-2465.wav" type="audio/wav">
+            </audio>
+            <div>
+                <input onclick="enableLoop()" type="button" class="looping-functions" value="Enable Loop" id="Enable Loop?"/>
+                <input onclick="disableLoop()" type="button" class="looping-functions" value="Disable Loop" id="Disable Loop."/>
+                <input onclick="checkLoop()" type="button" class="looping-functions" value="Check Looping Status" id="Check Looping Status"/>
+            </div>
+        </div>
         <footer class="earth-clipped">
             <div id="current-temp">...</div>
             <div id="current-sky">...</div>

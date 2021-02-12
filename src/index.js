@@ -211,4 +211,23 @@ function forecastWeather(name, data) {
         image.style.transform = `rotate(${window.pageYOffset / 4}deg)`; 
         circle.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
     }
+
+    // music
+    const outside = document.getElementById("outsideAudio");
+    document.getElementById("Enable Loop?").onclick = function () {
+        outside.loop = true;
+        outside.onload();
+    };
+
+    document.getElementById("Disable Loop.").onclick = function () {
+        outside.loop = false;
+        outside.load();
+    }
+    document.getElementById("Check Looping Status").onclick = function () {
+        if (outside.loop ){
+            alert("You're loop is turned ON")
+        } else {
+            alert("You're loop is turned OFF");
+        }
+    } 
 });

@@ -161,10 +161,19 @@ button:hover{
     margin-left: -80px;
     margin-top: 280px;
     padding-top: 150px;
-    font-size: 100px;
     font-size: 40px;
 }
-
+.audio{
+    position: fixed;
+    left: 36%;
+    margin-top: 330px;
+    padding-top: 150px;
+    text-align: center;
+    p{
+        font-size: 20px;
+        padding:10px;
+    }
+}
 // search bar
 .search-bar{
     position: fixed;
@@ -238,3 +247,12 @@ button:hover{
     z-index: -1;
 }
 
+// music
+.looping-functions{
+    margin: 10px;
+}
+.looping-functions:hover{
+    cursor: pointer;
+    background-color: $night-highlight-green;
+    border: 1px solid $morning-light-yellow;
+}
