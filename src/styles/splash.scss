@@ -4,6 +4,7 @@ body{
     height: 36000px;
     position: relative;
 }
+
 // default 
 input{
     outline: none;
@@ -175,6 +176,13 @@ button:hover{
 }
 // search bar
 .search-bar{
+    .symbol{
+        position: absolute;
+        top: 175px;
+        left: 40px;
+        color: gray;
+        width: 40px;
+    }
     position: fixed;
     // left: 50%;
     margin-left: 35%;
