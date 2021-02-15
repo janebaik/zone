@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     currentWeather();
     function currentTimeWeather(data) {
-        // debugger
+        if (data.message){
+            return document.getElementById("time").innerHTML = data.message;
+        }
         const unixTime = data.dt + data.timezone;
         const currentTime = timeConversion(unixTime);
         document.getElementById("time").innerHTML = currentTime;
@@ -48,7 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleInput(e) {
         // location based on user's input
         const input = e.target.value
-        weatherSearch(input);
+        if (input.length > 0 ) {
+            weatherSearch(input);
+        }
     }
 
     function weatherSearch(cityname) {
@@ -224,14 +228,13 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (skycondition.includes("storm")) {
             audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-heavy-storm-rain-loop-2400.wav' type='audio/wav'></audio>`;
             document.getElementById("audio-music").innerHTML = audio;
-        } else if (skycondition.includes("rain") || skycondition.includes("drizzle")) {
+        } else if (skycondition.includes("rain") || skycondition.includes("drizzle") || skycondition.includes("mist")) {
             audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-the-rainforest-and-distant-thunders-1260.wav' type='audio/wav'></audio>`;
             document.getElementById("audio-music").innerHTML = audio;
         } else {
             audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-urban-ambient-sound-2465.wav' type='audio/wav'></audio>`;
             document.getElementById("audio-music").innerHTML = audio;
         }
-        console.log(audio)
-
     }
+
 });
