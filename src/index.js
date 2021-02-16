@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const input = document.getElementById("input-city");
     input.addEventListener("change", handleInput);
+    
     function handleInput(e) {
         // location based on user's input
         const input = e.target.value
@@ -57,9 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function weatherSearch(cityname) {
         const api = "f8d77a8717d41a7529bb83ece54c1905";
+        debugger
+        // data.coord
+        // { lon: -121.8844, lat: 37.5999 }
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${api}`)
             .then(function (resp) { return resp.json() })
             .then(function (data) {
+                debugger
                 currentTimeWeather(data)
             })
     }
@@ -99,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.onclick = function (e) {
         if (e.target == modalForecast) {
+    
             modalForecast.style.display = "none"
         }
     }
@@ -107,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inputForecast.addEventListener("change", handleinputForecast);
     function handleinputForecast(e) {
         // location based on user's input
+
         const input = e.target.value
         futureWeather(input);
     }
@@ -204,18 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     }
-
-    window.onscroll = function () {
-        scrollRotate();
-    };
-
-    function scrollRotate() {
-        let image = document.getElementById("world");
-        let circle = document.getElementById("circle");
-        image.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
-        circle.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
-    }
-    scrollRotate()
     // music
 
     let audio;
@@ -236,5 +231,16 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("audio-music").innerHTML = audio;
         }
     }
-
 });
+
+window.onscroll = function () {
+    scrollRotate();
+};
+
+function scrollRotate() {
+    let image = document.getElementById("world");
+    let circle = document.getElementById("circle");
+    image.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
+    circle.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
+}
+scrollRotate()
