@@ -91,12 +91,14 @@ button:hover{
 
 //forecast modal
 .button-forecast{
-    position: fixed;
     padding: 15px;
     font-size: 15px;
     margin: 70px;
-    margin-left: 659px;
-    margin-top: 140px;
+    position: fixed;
+    left: 50%;
+    margin-left: -61px;
+    margin-top: 130px;
+    
 }
 
 
