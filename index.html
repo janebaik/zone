@@ -23,66 +23,65 @@
 </head>
 
 <body>
-    <nav class="nav-master">
-        <a target="_blank" href="https://github.com/janebaik">Github</a>
-        <a target="_blank" href="">Personal Site(deadlinkrn)</a>
-        <a target="_blank" href="https://www.linkedin.com/in/jane-baik-963b59195/">LinkedIn</a>
-    </nav>
+    <div id="scrolling">
+        <nav class="nav-master">
+            <a target="_blank" href="https://github.com/janebaik">Github</a>
+            <a target="_blank" href="">Personal Site(deadlinkrn)</a>
+            <a target="_blank" href="https://www.linkedin.com/in/jane-baik-963b59195/">LinkedIn</a>
+        </nav>
     <!-- about me -->
-    <button id="modal-btn">How does it work?</button>
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h1>Welcome to Zone</h1>
-            <p>You can search for weather all over the world! Please search a city to see the weather updates!</p>
-            <p>The forecast button will give you upcoming weather update</p>
-            <p>The music can be played. It is linked with the weather condition!</p>
-            <p>Try to find a place thats raining!</p>
+        <button id="modal-btn">How does it work?</button>
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h1>Welcome to Zone</h1>
+                <p>You can search for weather all over the world! Please search a city to see the weather updates!</p>
+                <p>The forecast button will give you upcoming weather update</p>
+                <p>The music can be played. It is linked with the weather condition!</p>
+                <p>Try to find a place thats raining!</p>
+            </div>
         </div>
-    </div>
-    <!-- forecast -->
-    <button id="btn-forecast" class="button-forecast">Get the Forecast</button>
-    <div class="modal-forecast">
-        <div class="modal-forecast-content">
-            <span class="close-forecast-btn">&times;</span>
-            <p>Insert a city!</p>
-            <p>Please wait until the graph is show!</p>
-            <h1 id="future-location"></h1>
-            <label for="input-forecast-city">City:</label>
-            <input type="text" class="search-forecast-bar-input" placeholder="#Search Cities"
-                id="input-forecast-city">
-            <div id="weatherContainer"></div>
-            <div id="diagram-date"></div>
+        <!-- forecast -->
+        <button id="btn-forecast" class="button-forecast">Get the Forecast</button>
+        <div class="modal-forecast">
+            <div class="modal-forecast-content">
+                <span class="close-forecast-btn">&times;</span>
+                <p>Insert a city!</p>
+                <p>Please wait until the graph is show!</p>
+                <h1 id="future-location"></h1>
+                <label for="input-forecast-city">City:</label>
+                <input type="text" class="search-forecast-bar-input" placeholder="#Search Cities"
+                    id="input-forecast-city">
+                <div id="weatherContainer"></div>
+                <div id="diagram-date"></div>
 
+            </div>
         </div>
-    </div>
-    <!-- globe for now -->
-    <div class="wrapper">
-        <img id="world" src="./src/styles/world.png" alt="scroll">
-        <div id="circle" class="circle"></div>
-    </div>
+        <!-- globe for now -->
+        <div class="wrapper">
+            <img id="world" src="./src/styles/world.png" alt="scroll">
+            <div id="circle" class="circle"></div>
+        </div>
 
-    <!-- "content" -->
-    <div>
-        <!-- "clock" -->
-        <span id="time" class="time">Loading...</span>
-        <div id="phaseOfDay"></div>
-        <!-- error message(should customize this) -->
-        <p id="geolocation-unaviable"></p>
-        <!-- search nar -->
-        <div class="search-bar">
-            <input type="text" class="search-bar-input" placeholder="#Search Cities" id="input-city">
+        <!-- "content" -->
+        <div>
+            <!-- "clock" -->
+            <span id="time" class="time">Loading...</span>
+            <div id="phaseOfDay"></div>
+            <!-- search nar -->
+            <div class="search-bar">
+                <input type="text" class="search-bar-input" placeholder="#Search Cities" id="input-city">
+            </div>
+            <!-- infor of city -->
+            <div class="audio">
+                <p>Music?</p>
+                <div id="audio-music"></div>
+            </div>
+            <footer class="earth-clipped">
+                <div id="current-temp">...</div>
+                <div id="current-sky">...</div>
+            </footer>
         </div>
-        <!-- infor of city -->
-        <div id="location"></div>
-        <div class="audio">
-            <p>Music?</p>
-            <div id="audio-music"></div>
-        </div>
-        <footer class="earth-clipped">
-            <div id="current-temp">...</div>
-            <div id="current-sky">...</div>
-        </footer>
     </div>
 </body>
 
