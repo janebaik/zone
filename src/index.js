@@ -14,11 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 const longitude = crd.longitude;
                 sortDataItems = [];
                 currentDataItem = [];
+                scrollingTrue = false;
                 fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${api}`)
                     .then(function (resp) { return resp.json() })
                     .then(function (data) {
                         currentTimeWeather(data.current);
-                        sortScrolling(data.current, data.daily);
+                        sortScrolling(data.current, data.daily, false);
                     })
             }, function (err) {
                 document.getElementById("time").innerHTML = err.message;
@@ -60,11 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const longitude = dataCoord.lon;
         sortDataItems = [];
         currentDataItem = [];
+        scrollingTrue = false;
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${api}`)
             .then(function (resp) { return resp.json() })
             .then(function (data) {
-                currentTimeWeather(data.current);
-                sortScrolling(data.current, data.daily);
+                // currentSearchTimeWeather(data.current);
+                debugger
+                sortScrolling(data.current, data.daily, true);
             })
     }
 
@@ -99,16 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // scrolling 
     let sortDataItems = [];
     let currentDataItem = [];
-    function sortScrolling(current, data){
+    let scrollingTrue = false;
+    function sortScrolling(current, data, scrolling){
         currentDataItem.push(current)
         data.map((dataItem) => {
             sortDataItems.push(dataItem)
         })
+        scrollingTrue = scrolling;
     }
     function scrollingTime() {
         console.log(currentDataItem.length)
+        debugger
         if (currentDataItem.length > 0){
-            currentTimeWeather(currentDataItem[0])
+            if (!scrollingTrue){
+                currentTimeWeather(currentDataItem[0])
+            }
         }
        
         if (sortDataItems.length > 0){
