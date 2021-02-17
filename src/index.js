@@ -7,22 +7,22 @@ import "./styles/index.scss";
 document.addEventListener("DOMContentLoaded", () => {
     function currentWeather() {
         if ("geolocation" in navigator) {
-            // console.log(navigator.geolocation);
             navigator.geolocation.getCurrentPosition(function (pos) {
                 const api = "f8d77a8717d41a7529bb83ece54c1905";
                 const crd = pos.coords;
                 const latitude = crd.latitude;
                 const longitude = crd.longitude;
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${api}`)
+                fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${api}`)
                     .then(function (resp) { return resp.json() })
                     .then(function (data) {
-                        currentTimeWeather(data)
+                        currentTimeWeather(data.current);
+                        sortScrolling(data.current, data.daily);
                     })
             }, function (err) {
-                document.getElementById("geolocation-unaviable").innerHTML = err.message;
+                document.getElementById("time").innerHTML = err.message;
             }, { enableHighAccuracy: false, timeout: 5000 });
         } else {
-            document.getElementById("geolocation-unaviable").innerHTML = "Geolocation is not avaible on your browser, Please type in your city.";
+            document.getElementById("time").innerHTML = "Geolocation is not avaible on your browser, Please type in your city.";
         }
     }
     currentWeather();
@@ -30,18 +30,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.message){
             return document.getElementById("time").innerHTML = data.message;
         }
-        const unixTime = data.dt + data.timezone;
-        const currentTime = timeConversion(unixTime);
+        const currentTime = timeConversion(data.dt);
         document.getElementById("time").innerHTML = currentTime;
         // current weather
-        const temp = data.main.feels_like;
+        const temp = data.feels_like;
         const sky = data.weather[0].description;
-        const location = data.name;
         const celcius = temp - 273.15;
         const fahrenheit = 1.8 * (temp - 273) + 32;
         document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
         document.getElementById("current-sky").innerHTML = `${sky}`;
-        document.getElementById("location").innerHTML = `${location}`;
         skyCondition(sky);
     }
 
@@ -58,17 +55,355 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function weatherSearch(cityname) {
         const api = "f8d77a8717d41a7529bb83ece54c1905";
-        debugger
-        // data.coord
-        // { lon: -121.8844, lat: 37.5999 }
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${api}`)
             .then(function (resp) { return resp.json() })
             .then(function (data) {
-                debugger
                 currentTimeWeather(data)
             })
     }
+    // scrolling 
+    const sortDataItems = [];
+    const currentDataItem = []
+    function sortScrolling(current, data){
+        currentDataItem.push(current)
+        data.map((dataItem) => {
+            sortDataItems.push(dataItem)
 
+        })
+    }
+    function scrollingTime() {
+
+        console.log(window.pageYOffset)
+        if (currentDataItem.length > 0){
+            currentTimeWeather(currentDataItem[0])
+        }
+       
+        if (sortDataItems.length > 0){
+            if (window.pageYOffset >= 2000 && window.pageYOffset < 3000) {
+                const dataItem = sortDataItems[0]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.day;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 3000 && window.pageYOffset < 4000) {
+                const dataItem = sortDataItems[0]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.eve;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 4000 && window.pageYOffset < 5000) {
+                const dataItem = sortDataItems[0]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.night;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+
+            if (window.pageYOffset >= 5000 && window.pageYOffset < 6000) {
+                const dataItem = sortDataItems[1]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.day;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 6000 && window.pageYOffset < 7000) {
+                const dataItem = sortDataItems[1]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.eve;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 7000 && window.pageYOffset < 8000)  {
+                const dataItem = sortDataItems[1]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.night;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+
+            if (window.pageYOffset >= 8000 && window.pageYOffset < 9000) {
+                const dataItem = sortDataItems[2]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.day;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 9000 && window.pageYOffset < 10500) {
+                const dataItem = sortDataItems[2]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.eve;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 10500 && window.pageYOffset < 12000) {
+                const dataItem = sortDataItems[2]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.night;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+
+
+            if (window.pageYOffset >= 12000 && window.pageYOffset < 13000) {
+                const dataItem = sortDataItems[3]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.day;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 13000 && window.pageYOffset < 14000) {
+                const dataItem = sortDataItems[3]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.eve;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 14000 && window.pageYOffset < 15000) {
+                const dataItem = sortDataItems[3]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.night;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+
+
+            if (window.pageYOffset >= 15000 && window.pageYOffset < 17000) {
+                const dataItem = sortDataItems[4]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.day;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 17000 && window.pageYOffset < 18000) {
+                const dataItem = sortDataItems[4]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.eve;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 18000 && window.pageYOffset < 19000) {
+                const dataItem = sortDataItems[4]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.night;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+
+
+            if (window.pageYOffset >= 19000 && window.pageYOffset < 20000) {
+                const dataItem = sortDataItems[5]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.day;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 20000 && window.pageYOffset < 21000) {
+                const dataItem = sortDataItems[5]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.eve;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 21000 && window.pageYOffset < 22000) {
+                const dataItem = sortDataItems[5]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.night;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+
+
+            if (window.pageYOffset >= 22000 && window.pageYOffset < 23000) {
+                const dataItem = sortDataItems[6]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.day;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 23000 && window.pageYOffset < 25000) {
+                const dataItem = sortDataItems[6]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.eve;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 25000 && window.pageYOffset < 26000) {
+                const dataItem = sortDataItems[6]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.night;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+
+            if (window.pageYOffset >= 26000 && window.pageYOffset < 27000) {
+                const dataItem = sortDataItems[7]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.day;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 27000 && window.pageYOffset < 28000) {
+                const dataItem = sortDataItems[7]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.eve;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+            if (window.pageYOffset >= 28000 && window.pageYOffset < 29000) {
+                const dataItem = sortDataItems[7]
+                const currentTime = timeConversion(dataItem.dt);
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                // current weather
+                const temp = dataItem.feels_like.night;
+                const sky = dataItem.weather[0].description;
+                const celcius = temp - 273.15;
+                const fahrenheit = 1.8 * (temp - 273) + 32;
+                document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                document.getElementById("current-sky").innerHTML = `${sky}`;
+                skyCondition(sky);
+            }
+        }
+    };
     // about website
     let modalButton = document.getElementById("modal-btn");
     let modal = document.querySelector(".modal");
@@ -215,7 +550,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let audio;
     function skyCondition(skycondition) {
-        debugger
         if (skycondition.includes("snow")) {
             audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-blizzard-cold-winds-1153.wav' type='audio/wav'></audio>`;
             document.getElementById("audio-music").innerHTML = audio;
@@ -231,16 +565,19 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("audio-music").innerHTML = audio;
         }
     }
-});
+    window.onscroll = function () {
+        scrollRotate();
+        scrollingTime();
+    };
 
-window.onscroll = function () {
+    function scrollRotate() {
+        let image = document.getElementById("world");
+        let circle = document.getElementById("circle");
+        image.style.transform = `rotate(${window.pageYOffset / 10}deg)`;
+        circle.style.transform = `rotate(${window.pageYOffset / 10}deg)`;
+        
+    }
+
     scrollRotate();
-};
 
-function scrollRotate() {
-    let image = document.getElementById("world");
-    let circle = document.getElementById("circle");
-    image.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
-    circle.style.transform = `rotate(${window.pageYOffset / 4}deg)`;
-}
-scrollRotate()
+});
