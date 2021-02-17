@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const crd = pos.coords;
                 const latitude = crd.latitude;
                 const longitude = crd.longitude;
+                sortDataItems = [];
+                currentDataItem = [];
                 fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${api}`)
                     .then(function (resp) { return resp.json() })
                     .then(function (data) {
@@ -33,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentTime = timeConversion(data.dt);
         document.getElementById("time").innerHTML = currentTime;
         // current weather
-        debugger
         const temp = data.feels_like;
         const sky = data.weather[0].description;
         const celcius = temp - 273.15;
@@ -53,18 +54,32 @@ document.addEventListener("DOMContentLoaded", () => {
             weatherSearch(input);
         }
     }
+    function searchCityLatLon(dataCoord){
+        const api = "f8d77a8717d41a7529bb83ece54c1905";
+        const latitude = dataCoord.lat;
+        const longitude = dataCoord.lon;
+        sortDataItems = [];
+        currentDataItem = [];
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${api}`)
+            .then(function (resp) { return resp.json() })
+            .then(function (data) {
+                currentTimeWeather(data.current);
+                sortScrolling(data.current, data.daily);
+            })
+    }
 
     function weatherSearch(cityname) {
         const api = "f8d77a8717d41a7529bb83ece54c1905";
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${api}`)
             .then(function (resp) { return resp.json() })
             .then(function (data) {
-                currentSearchTimeWeather(data)
+                currentSearchTimeWeather(cityname, data)
+                searchCityLatLon(data.coord)
             })
     }
 
 
-    function currentSearchTimeWeather(data) {
+    function currentSearchTimeWeather(cityname, data) {
         if (data.message) {
             return document.getElementById("time").innerHTML = data.message;
         }
@@ -72,28 +87,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentTime = timeInternationalConversion(unixTime);
         document.getElementById("time").innerHTML = currentTime;
         // current weather
-        debugger
         const temp = data.main.feels_like;
         const sky = data.weather[0].description;
         const celcius = temp - 273.15;
         const fahrenheit = 1.8 * (temp - 273) + 32;
+        document.getElementById("location").innerHTML = `${cityname}`
         document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
         document.getElementById("current-sky").innerHTML = `${sky}`;
         skyCondition(sky);
     }
     // scrolling 
-    const sortDataItems = [];
-    const currentDataItem = []
+    let sortDataItems = [];
+    let currentDataItem = [];
     function sortScrolling(current, data){
         currentDataItem.push(current)
         data.map((dataItem) => {
             sortDataItems.push(dataItem)
-
         })
     }
     function scrollingTime() {
-
-        console.log(window.pageYOffset)
+        console.log(currentDataItem.length)
         if (currentDataItem.length > 0){
             currentTimeWeather(currentDataItem[0])
         }
