@@ -1,6 +1,6 @@
 import {
     timeConversion,
-    unixTime
+    timeInternationalConversion
 } from "./time";
 import "./styles/index.scss";
 
@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentTime = timeConversion(data.dt);
         document.getElementById("time").innerHTML = currentTime;
         // current weather
+        debugger
         const temp = data.feels_like;
         const sky = data.weather[0].description;
         const celcius = temp - 273.15;
@@ -58,8 +59,27 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${api}`)
             .then(function (resp) { return resp.json() })
             .then(function (data) {
-                currentTimeWeather(data)
+                currentSearchTimeWeather(data)
             })
+    }
+
+
+    function currentSearchTimeWeather(data) {
+        if (data.message) {
+            return document.getElementById("time").innerHTML = data.message;
+        }
+        const unixTime = data.dt + data.timezone;
+        const currentTime = timeInternationalConversion(unixTime);
+        document.getElementById("time").innerHTML = currentTime;
+        // current weather
+        debugger
+        const temp = data.main.feels_like;
+        const sky = data.weather[0].description;
+        const celcius = temp - 273.15;
+        const fahrenheit = 1.8 * (temp - 273) + 32;
+        document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+        document.getElementById("current-sky").innerHTML = `${sky}`;
+        skyCondition(sky);
     }
     // scrolling 
     const sortDataItems = [];
