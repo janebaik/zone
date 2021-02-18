@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return document.getElementById("time").innerHTML = data.message;
         }
         const currentTime = timeConversion(data.dt);
-        document.getElementById("time").innerHTML = currentTime;
+        document.getElementById("timeCurrent").innerHTML = currentTime;
         // current weather
         const temp = data.feels_like;
         const sky = data.weather[0].description;
@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(function (resp) { return resp.json() })
             .then(function (data) {
                 // currentSearchTimeWeather(data.current);
-                debugger
                 sortScrolling(data.current, data.daily, true);
             })
     }
@@ -89,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const unixTime = data.dt + data.timezone;
         const currentTime = timeInternationalConversion(unixTime);
         document.getElementById("time").innerHTML = currentTime;
+
         // current weather
         const temp = data.main.feels_like;
         const sky = data.weather[0].description;
@@ -112,10 +112,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function scrollingTime() {
         console.log(currentDataItem.length)
-        debugger
         if (currentDataItem.length > 0){
             if (!scrollingTrue){
                 currentTimeWeather(currentDataItem[0])
+            } else {
+                if (window.pageYOffset < 2000) {
+                    const dataItem = sortDataItems[0]
+                    const currentTime = timeConversion(dataItem.dt);
+                    document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                    // current weather
+                    const temp = dataItem.feels_like.day;
+                    const sky = dataItem.weather[0].description;
+                    const celcius = temp - 273.15;
+                    const fahrenheit = 1.8 * (temp - 273) + 32;
+                    document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
+                    document.getElementById("current-sky").innerHTML = `${sky}`;
+                    skyCondition(sky);
+                }
             }
         }
        
