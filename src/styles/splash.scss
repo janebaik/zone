@@ -93,16 +93,22 @@ button:hover{
 //forecast modal
 .button-forecast{
     padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
     font-size: 15px;
     margin: 70px;
     position: fixed;
     left: 50%;
-    margin-left: -61px;
-    margin-top: 650px;
-    
+    margin-left: -63px;
+    margin-top: 660px;
 }
 
-
+.forecast-content{
+    font-size: 15px;
+    position: fixed;
+    left: 41%;
+    margin-top: 620px;
+}
 .modal-forecast{
     display: none;
     position: fixed;
@@ -143,6 +149,8 @@ button:hover{
 .close-forecast-btn:hover {
     color: darkgray;
 }
+
+
 #timeCurrent{
     margin-left: -250px;
     position: fixed;
@@ -175,9 +183,8 @@ button:hover{
 }
 .audio{
     position: fixed;
-    left: 40%;
-    margin-top: 330px;
-    padding-top: 50px;
+    left: 42%;
+    margin-top: 380px;
     text-align: center;
     p{
         font-size: 20px;
@@ -226,7 +233,7 @@ button:hover{
         position: fixed;
         left: 50%;
         margin-left: -180px;
-        margin-top: 800px;
+        margin-top: 730px;
         font-size: 75px;
     }
 
@@ -234,7 +241,7 @@ button:hover{
         position: fixed;
         left: 50%;
         margin-left: 300px;
-        margin-top: 800px;
+        margin-top: 730px;
         font-size: 75px;
         font-size: 40px;
     }
