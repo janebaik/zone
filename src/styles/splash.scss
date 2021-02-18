@@ -19,9 +19,11 @@ button{
 }
 button:hover{
     cursor: pointer;
+    transition-duration: 1s;
     background-color: $night-highlight-green;
     border: 1px solid $morning-light-yellow;
 }
+// error
 
 // navbar
 .nav-master{
@@ -39,6 +41,7 @@ button:hover{
     }
     a:hover{
         background-color:$gray;
+        transition-duration: 1s;
         border: 1px solid $morning-light-yellow;
     }
 }
@@ -87,6 +90,7 @@ button:hover{
     font-weight: bold;
 }
 .close-btn:hover {
+    cursor: pointer;
     color: darkgray;
 }
 
@@ -147,6 +151,7 @@ button:hover{
     font-weight: bold;
 }
 .close-forecast-btn:hover {
+    cursor: pointer;
     color: darkgray;
 }
 
@@ -169,7 +174,8 @@ button:hover{
     font-size: 100px;
     border-radius: 5px;
     background-color: #719291a3;
-    
+    text-align: center;
+    z-index: 99;
 }
 
 // default location
@@ -183,12 +189,18 @@ button:hover{
 }
 .audio{
     position: fixed;
-    left: 42%;
+    left: 47%;
     margin-top: 380px;
     text-align: center;
     p{
         font-size: 20px;
         padding:10px;
+    }
+    #outsideAudio{
+        display: none;
+    }
+    .music-button{
+        padding: 10px;
     }
 }
 // search bar
@@ -275,6 +287,7 @@ button:hover{
     margin: 10px;
 }
 .looping-functions:hover{
+    transition-duration: 1s;
     cursor: pointer;
     background-color: $night-highlight-green;
     border: 1px solid $morning-light-yellow;

@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         sortScrolling(data.current, data.daily, false);
                     })
             }, function (err) {
-                document.getElementById("time").innerHTML = err.message;
+                document.getElementById("time").innerHTML = "Search for a city!";
             }, { enableHighAccuracy: false, timeout: 5000 });
         } else {
             document.getElementById("time").innerHTML = "Geolocation is not avaible on your browser, Please type in your city.";
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const sky = data.weather[0].description;
         const celcius = temp - 273.15;
         const fahrenheit = 1.8 * (temp - 273) + 32;
-        document.getElementById("location").innerHTML = `${cityname}`
+        // document.getElementById("location").innerHTML = `${cityname}`
         document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
         document.getElementById("current-sky").innerHTML = `${sky}`;
         skyCondition(sky);
@@ -619,6 +619,19 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("audio-music").innerHTML = audio;
         }
     }
+
+    let startButton = document.getElementById("start-music");
+    let stopButton = document.getElementById("stop-music");
+    startButton.onclick = function(){
+        const music = document.getElementById("outsideAudio");
+        music.play();
+    }
+
+    stopButton.onclick = function () {
+        const music = document.getElementById("outsideAudio");
+        music.pause();
+    }
+
     window.onscroll = function () {
         scrollRotate();
         scrollingTime();
