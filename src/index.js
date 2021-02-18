@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return document.getElementById("time").innerHTML = data.message;
         }
         const currentTime = timeConversion(data.dt);
-        document.getElementById("timeCurrent").innerHTML = currentTime;
+        document.getElementById("timeCurrent").innerHTML = `Current: ${currentTime}`;
         // current weather
         const temp = data.feels_like;
         const sky = data.weather[0].description;
