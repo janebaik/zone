@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const fahrenheit = 1.8 * (temp - 273) + 32;
         document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
         document.getElementById("current-sky").innerHTML = `${sky}`;
-        skyCondition(sky);
+        //
     }
 
     const input = document.getElementById("input-city");
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // document.getElementById("location").innerHTML = `${cityname}`
         document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
         document.getElementById("current-sky").innerHTML = `${sky}`;
-        skyCondition(sky);
+        //
     }
     // scrolling 
     let sortDataItems = [];
@@ -127,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     const fahrenheit = 1.8 * (temp - 273) + 32;
                     document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                     document.getElementById("current-sky").innerHTML = `${sky}`;
-                    skyCondition(sky);
                 }
             }
         }
@@ -144,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 3000 && window.pageYOffset < 4000) {
                 const dataItem = sortDataItems[0]
@@ -157,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 4000 && window.pageYOffset < 5000) {
                 const dataItem = sortDataItems[0]
@@ -170,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
 
             if (window.pageYOffset >= 5000 && window.pageYOffset < 6000) {
@@ -184,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 6000 && window.pageYOffset < 7000) {
                 const dataItem = sortDataItems[1]
@@ -197,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 7000 && window.pageYOffset < 8000)  {
                 const dataItem = sortDataItems[1]
@@ -210,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
 
             if (window.pageYOffset >= 8000 && window.pageYOffset < 9000) {
@@ -224,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 9000 && window.pageYOffset < 10500) {
                 const dataItem = sortDataItems[2]
@@ -237,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 10500 && window.pageYOffset < 12000) {
                 const dataItem = sortDataItems[2]
@@ -250,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
 
 
@@ -265,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 13000 && window.pageYOffset < 14000) {
                 const dataItem = sortDataItems[3]
@@ -278,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 14000 && window.pageYOffset < 15000) {
                 const dataItem = sortDataItems[3]
@@ -291,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
 
 
@@ -306,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 17000 && window.pageYOffset < 18000) {
                 const dataItem = sortDataItems[4]
@@ -319,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 18000 && window.pageYOffset < 19000) {
                 const dataItem = sortDataItems[4]
@@ -332,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
 
 
@@ -347,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 20000 && window.pageYOffset < 21000) {
                 const dataItem = sortDataItems[5]
@@ -360,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+                //
             }
             if (window.pageYOffset >= 21000 && window.pageYOffset < 22000) {
                 const dataItem = sortDataItems[5]
@@ -373,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+            
             }
 
 
@@ -388,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+            
             }
             if (window.pageYOffset >= 23000 && window.pageYOffset < 25000) {
                 const dataItem = sortDataItems[6]
@@ -401,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+            
             }
             if (window.pageYOffset >= 25000 && window.pageYOffset < 26000) {
                 const dataItem = sortDataItems[6]
@@ -414,7 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+            
             }
 
             if (window.pageYOffset >= 26000 && window.pageYOffset < 27000) {
@@ -428,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+            
             }
             if (window.pageYOffset >= 27000 && window.pageYOffset < 28000) {
                 const dataItem = sortDataItems[7]
@@ -441,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+            
             }
             if (window.pageYOffset >= 28000 && window.pageYOffset < 29000) {
                 const dataItem = sortDataItems[7]
@@ -454,7 +453,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fahrenheit = 1.8 * (temp - 273) + 32;
                 document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
                 document.getElementById("current-sky").innerHTML = `${sky}`;
-                skyCondition(sky);
+            
             }
         }
     };
@@ -604,6 +603,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let audio;
     function skyCondition(skycondition) {
+        console.log(document.getElementById("current-sky").innerHTML)
         if (skycondition.includes("snow")) {
             audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-blizzard-cold-winds-1153.wav' type='audio/wav'></audio>`;
             document.getElementById("audio-music").innerHTML = audio;
@@ -619,6 +619,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("audio-music").innerHTML = audio;
         }
     }
+    
 
     let startButton = document.getElementById("start-music");
     let stopButton = document.getElementById("stop-music");
@@ -642,6 +643,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let circle = document.getElementById("circle");
         image.style.transform = `rotate(${window.pageYOffset / 10}deg)`;
         circle.style.transform = `rotate(${window.pageYOffset / 10}deg)`;
+        
         
     }
 
