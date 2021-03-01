@@ -1,18 +1,13 @@
-# zone
-Proposal is in the wiki 
+# Zone
 
+[Click here to view the live site!](https://janebaik.github.io/zone/)
 
-Wireframe
-https://wireframe.cc/MbrkWk
+## Overview
 
-live Link:  https://janebaik.github.io/zone/
+## Zone was built with: 
+* JavaScript
+* HTML
+* CSS
+* SASS
 
-
-note
-Link to live version.
-Instructions on how to play/interact with the project.
-List of techs/languages/plugins/APIs used.
-Technical implementation details with code snippets (make sure it looks good).
-To-dos/future features.
-No .DS_Stores / debuggers / console.logs.
-Organize into /assets and /lib.
+## Features 
