@@ -5,7 +5,7 @@ Proposal is in the wiki
 Wireframe
 https://wireframe.cc/MbrkWk
 
-live Link:  https://janebaik.github.io/
+live Link:  https://janebaik.github.io/zone/
 
 
 note
