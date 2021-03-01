@@ -11,8 +11,11 @@
 * SASS
 
 ## Features 
-Telling users their weather degree, cloud condition	
+Telling users their weather degree, cloud condition
+<p align="center">
 <img src="readmepics/splash.png" alt="">
+</p>
+
 Diagram
 <img src="./readmepics/diagram.png" alt="">
 search for different timezones and different weather conditions
