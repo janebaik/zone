@@ -15,8 +15,6 @@
 ### Diagram
 * This diagram gives you the forecast of the weather for the upcoming days! You can search all over the world and the diagram will be updated with the new information. 
 <img src="./readmepics/diagram.png" alt="">
-search for different timezones and different weather conditions
-<img src="readmepics/search.png" alt="">
 
 ### Continuous scrolling effect	
 * As the user scrolls, information on the website is updated with the upcoming forecast and the background will change from morning to night. 
