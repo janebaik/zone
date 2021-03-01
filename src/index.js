@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const fahrenheit = 1.8 * (temp - 273) + 32;
         document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
         document.getElementById("current-sky").innerHTML = `${sky}`;
+        skyCondition(sky);
         //
     }
 
