@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const fahrenheit = 1.8 * (temp - 273) + 32;
         document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
         document.getElementById("current-sky").innerHTML = `${sky}`;
-        skyCondition(sky);
         //
+        // skyConditsion(sky)
     }
 
     const input = document.getElementById("input-city");
@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const unixTime = data.dt + data.timezone;
         const currentTime = timeInternationalConversion(unixTime);
         document.getElementById("time").innerHTML = currentTime;
-
         // current weather
         const temp = data.main.feels_like;
         const sky = data.weather[0].description;
@@ -98,7 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // document.getElementById("location").innerHTML = `${cityname}`
         document.getElementById("current-temp").innerHTML = `${Math.round(celcius)}°C || ${Math.round(fahrenheit)}°F`;
         document.getElementById("current-sky").innerHTML = `${sky}`;
-        //
+        const statusAutop = document.getElementById("auto-play").innerHTML.localeCompare("Auto-Play is Off")
+        skyCondition(sky, statusAutop)
     }
     // scrolling 
     let sortDataItems = [];
@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
         scrollingTrue = scrolling;
     }
     function scrollingTime() {
-        console.log(currentDataItem.length)
         if (currentDataItem.length > 0){
             if (!scrollingTrue){
                 currentTimeWeather(currentDataItem[0])
@@ -120,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (window.pageYOffset < 2000) {
                     const dataItem = sortDataItems[0]
                     const currentTime = timeConversion(dataItem.dt);
-                    document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                    document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 8)}`;
                     // current weather
                     const temp = dataItem.feels_like.day;
                     const sky = dataItem.weather[0].description;
@@ -136,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 2000 && window.pageYOffset < 3000) {
                 const dataItem = sortDataItems[0]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.day;
                 const sky = dataItem.weather[0].description;
@@ -149,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 3000 && window.pageYOffset < 4000) {
                 const dataItem = sortDataItems[0]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.eve;
                 const sky = dataItem.weather[0].description;
@@ -162,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 4000 && window.pageYOffset < 5000) {
                 const dataItem = sortDataItems[0]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.night;
                 const sky = dataItem.weather[0].description;
@@ -176,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 5000 && window.pageYOffset < 6000) {
                 const dataItem = sortDataItems[1]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.day;
                 const sky = dataItem.weather[0].description;
@@ -189,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 6000 && window.pageYOffset < 7000) {
                 const dataItem = sortDataItems[1]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.eve;
                 const sky = dataItem.weather[0].description;
@@ -202,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 7000 && window.pageYOffset < 8000)  {
                 const dataItem = sortDataItems[1]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.night;
                 const sky = dataItem.weather[0].description;
@@ -216,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 8000 && window.pageYOffset < 9000) {
                 const dataItem = sortDataItems[2]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.day;
                 const sky = dataItem.weather[0].description;
@@ -229,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 9000 && window.pageYOffset < 10500) {
                 const dataItem = sortDataItems[2]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.eve;
                 const sky = dataItem.weather[0].description;
@@ -242,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 10500 && window.pageYOffset < 12000) {
                 const dataItem = sortDataItems[2]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.night;
                 const sky = dataItem.weather[0].description;
@@ -257,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 12000 && window.pageYOffset < 13000) {
                 const dataItem = sortDataItems[3]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.day;
                 const sky = dataItem.weather[0].description;
@@ -270,7 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 13000 && window.pageYOffset < 14000) {
                 const dataItem = sortDataItems[3]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.eve;
                 const sky = dataItem.weather[0].description;
@@ -283,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 14000 && window.pageYOffset < 15000) {
                 const dataItem = sortDataItems[3]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.night;
                 const sky = dataItem.weather[0].description;
@@ -298,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 15000 && window.pageYOffset < 17000) {
                 const dataItem = sortDataItems[4]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.day;
                 const sky = dataItem.weather[0].description;
@@ -311,7 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 17000 && window.pageYOffset < 18000) {
                 const dataItem = sortDataItems[4]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.eve;
                 const sky = dataItem.weather[0].description;
@@ -324,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 18000 && window.pageYOffset < 19000) {
                 const dataItem = sortDataItems[4]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.night;
                 const sky = dataItem.weather[0].description;
@@ -339,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 19000 && window.pageYOffset < 20000) {
                 const dataItem = sortDataItems[5]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.day;
                 const sky = dataItem.weather[0].description;
@@ -352,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 20000 && window.pageYOffset < 21000) {
                 const dataItem = sortDataItems[5]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.eve;
                 const sky = dataItem.weather[0].description;
@@ -365,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 21000 && window.pageYOffset < 22000) {
                 const dataItem = sortDataItems[5]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.night;
                 const sky = dataItem.weather[0].description;
@@ -380,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 22000 && window.pageYOffset < 23000) {
                 const dataItem = sortDataItems[6]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.day;
                 const sky = dataItem.weather[0].description;
@@ -393,7 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 23000 && window.pageYOffset < 25000) {
                 const dataItem = sortDataItems[6]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.eve;
                 const sky = dataItem.weather[0].description;
@@ -406,7 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 25000 && window.pageYOffset < 26000) {
                 const dataItem = sortDataItems[6]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.night;
                 const sky = dataItem.weather[0].description;
@@ -420,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 26000 && window.pageYOffset < 27000) {
                 const dataItem = sortDataItems[7]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Morning of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.day;
                 const sky = dataItem.weather[0].description;
@@ -433,7 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 27000 && window.pageYOffset < 28000) {
                 const dataItem = sortDataItems[7]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Evening of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.eve;
                 const sky = dataItem.weather[0].description;
@@ -446,7 +445,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.pageYOffset >= 28000 && window.pageYOffset < 29000) {
                 const dataItem = sortDataItems[7]
                 const currentTime = timeConversion(dataItem.dt);
-                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 9)}`;
+                document.getElementById("time").innerHTML = `Night of ${currentTime.slice(0, 8)}`;
                 // current weather
                 const temp = dataItem.feels_like.night;
                 const sky = dataItem.weather[0].description;
@@ -603,31 +602,57 @@ document.addEventListener("DOMContentLoaded", () => {
     // music
 
     let audio;
-    function skyCondition(skycondition) {
-        console.log(document.getElementById("current-sky").innerHTML)
-        if (skycondition.includes("snow")) {
-            audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-blizzard-cold-winds-1153.wav' type='audio/wav'></audio>`;
-            document.getElementById("audio-music").innerHTML = audio;
-            // debugger
-        } else if (skycondition.includes("storm")) {
-            audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-heavy-storm-rain-loop-2400.wav' type='audio/wav'></audio>`;
-            document.getElementById("audio-music").innerHTML = audio;
-        } else if (skycondition.includes("rain") || skycondition.includes("drizzle") || skycondition.includes("mist")) {
-            audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-the-rainforest-and-distant-thunders-1260.wav' type='audio/wav'></audio>`;
-            document.getElementById("audio-music").innerHTML = audio;
+    function skyCondition(skycondition, autoPlayStatus) {
+        if (autoPlayStatus !== 0){
+            if (skycondition.includes("snow")) {
+                audio = `<audio id='outsideAudio' controls loop autoplay ><source src='./src/styles/music/mixkit-blizzard-cold-winds-1153.wav' type='audio/wav'></audio>`;
+                document.getElementById("audio-music").innerHTML = audio;
+            } else if (skycondition.includes("storm")) {
+                audio = `<audio id='outsideAudio' controls loop autoplay ><source src='./src/styles/music/mixkit-heavy-storm-rain-loop-2400.wav' type='audio/wav'></audio>`;
+                document.getElementById("audio-music").innerHTML = audio;
+            } else if (skycondition.includes("rain") || skycondition.includes("drizzle") || skycondition.includes("mist")) {
+                audio = `<audio id='outsideAudio' controls loop autoplay ><source src='./src/styles/music/mixkit-the-rainforest-and-distant-thunders-1260.wav' type='audio/wav'></audio>`;
+                document.getElementById("audio-music").innerHTML = audio;
+            } else {
+                audio = `<audio id='outsideAudio' controls loop autoplay ><source src='./src/styles/music/mixkit-urban-ambient-sound-2465.wav' type='audio/wav'></audio>`;
+                document.getElementById("audio-music").innerHTML = audio;
+            }
+
         } else {
-            audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-urban-ambient-sound-2465.wav' type='audio/wav'></audio>`;
-            document.getElementById("audio-music").innerHTML = audio;
+            if (skycondition.includes("snow")) {
+                audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-blizzard-cold-winds-1153.wav' type='audio/wav'></audio>`;
+                document.getElementById("audio-music").innerHTML = audio;
+            } else if (skycondition.includes("storm")) {
+                audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-heavy-storm-rain-loop-2400.wav' type='audio/wav'></audio>`;
+                document.getElementById("audio-music").innerHTML = audio;
+            } else if (skycondition.includes("rain") || skycondition.includes("drizzle") || skycondition.includes("mist")) {
+                audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-the-rainforest-and-distant-thunders-1260.wav' type='audio/wav'></audio>`;
+                document.getElementById("audio-music").innerHTML = audio;
+            } else {
+                audio = `<audio id='outsideAudio' controls loop><source src='./src/styles/music/mixkit-urban-ambient-sound-2465.wav' type='audio/wav'></audio>`;
+                document.getElementById("audio-music").innerHTML = audio;
+            }
         }
     }
-    
-
+    let weather = document.getElementById("current-sky").innerHTML
+    skyCondition(weather)
     let startButton = document.getElementById("start-music");
     let stopButton = document.getElementById("stop-music");
+    let autoplay = document.getElementById("auto-play");
+    autoplay.onclick = function(){
+        const letweatherplay = document.getElementById("auto-play").innerHTML
+        if (letweatherplay === "Auto-Play is On") {
+            document.getElementById("auto-play").innerHTML = "Auto-Play is Off"
+
+        } else {
+            document.getElementById("auto-play").innerHTML = "Auto-Play is On"
+        }
+    }
     startButton.onclick = function(){
         const music = document.getElementById("outsideAudio");
         music.play();
     }
+
 
     stopButton.onclick = function () {
         const music = document.getElementById("outsideAudio");
